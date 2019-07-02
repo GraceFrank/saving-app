@@ -40,4 +40,4 @@ User.hasMany(Plan, { as: 'plans' });
 Transaction.belongsTo(Plan);
 Plan.hasMany(Transaction, { as: 'transactions' });
 
-module.exports = db;
+module.exports = {db, Admin, User, NexOfKin, Plan, Transaction, UserProfile, Card}
