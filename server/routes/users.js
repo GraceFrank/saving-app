@@ -1,5 +1,5 @@
 const express = require('express');
-const {User} = require('../db/db');
+const { User } = require('../db/db');
 const bcrypt = require('bcrypt')
 
 const router = express.Router();
@@ -11,8 +11,8 @@ const router = express.Router();
 
 router.post('/login', async (req, res) => {
 
-    //find user by email
-    let user = await User.FindOne({where: { email: req.body.email}});
+    // find user by email
+    let user = await User.findOne({where: { email: req.body.email}});
     if(!user) res.status(401).send({error: "Invalid username/password"});
 
     //compare the passwords
