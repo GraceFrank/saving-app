@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 //my modules
 // const users = require('./users');
-
+const users = require('../routes/users');
 const router = express.Router();
 
 //all routes/ goes here
@@ -15,4 +15,5 @@ module.exports = app => {
   app.use(bodyParser.urlencoded({ extended: false }));
 
   app.use('/api/v1', router);
+  app.use('/users', users);
 };
