@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "An online saving platform",
   "main": "app.js",
+  "scripts": {
+    "start": "",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "startdev": "node ./server/app.js"
+  },
   "repository": "https://github.com/GraceFrank/saving-app",
   "author": "Grace Frank <frankgracey@gmail.com>",
   "license": "MIT",
@@ -11,6 +16,7 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.9.0",
