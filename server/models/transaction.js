@@ -7,11 +7,13 @@ module.exports = (db, Sequelize) => {
     amount: {
       allowNull: false,
       type: Sequelize.DOUBLE
+    },
+    status: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false
     }
   });
   return Transaction;
 };
 
-//note sender/receiver
 //should there be a successful/unsuccessful status for transactions?
-//shouldnt the card be added to deposits
