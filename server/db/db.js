@@ -25,8 +25,8 @@ Card.belongsTo(User);
 User.hasMany(Card, { as: 'cards' });
 
 //user -userProfile (one to one)
-UserProfile.belongsTo(User);
-User.hasOne(UserProfile);
+UserProfile.hasOne(User);
+User.belongsTo(UserProfile);
 
 //user - Transaction (one to many)
 Transaction.belongsTo(User);
@@ -40,4 +40,13 @@ User.hasMany(Plan, { as: 'plans' });
 Transaction.belongsTo(Plan);
 Plan.hasMany(Transaction, { as: 'transactions' });
 
-module.exports = {db, Admin, User, NexOfKin, Plan, Transaction, UserProfile, Card}
+module.exports = {
+  db,
+  Admin,
+  User,
+  NexOfKin,
+  Plan,
+  Transaction,
+  UserProfile,
+  Card
+};
