@@ -1,5 +1,4 @@
 module.exports = (db, Sequelize) => {
-  //should db names be camel casing?
   const UserProfile = db.define('userProfile', {
     gender: {
       type: Sequelize.STRING
