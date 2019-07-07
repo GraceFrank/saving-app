@@ -59,7 +59,7 @@ module.exports = (db, Sequelize) => {
     user.password = await Encryption.hashPassword(user.password);
   });
 
-  User.generateToken = () => {
+  User.prototype.generateToken = function() {
     //synchronous vs asynchronous
     return jwt.sign(
       {
