@@ -15,24 +15,16 @@ class Mailer {
     this.transporter = transporter;
   }
 
-  sendMail(mailOptions) {
-    return this.transporter.sendMail(mailOptions, function(err, info) {
-      if (err) console.log(err);
-      else console.log(info);
+  sendMail(userEmail, userFirstName, token, mailOptions) {
+    const transporter = this.transporter;
+    mailOptions = mailOptions(userEmail, userFirstName, token);
+    return new Promise(function(resolve, reject) {
+      transporter.sendMail(mailOptions, function(err, info) {
+        if (err) reject(err);
+        else resolve(info);
+      });
     });
   }
-
-  //after signUp a mail requesting user to verify account can be sent using this method
-  sendSignupMail(userEmail, userName) {
-    const mailOptions = {
-      from: `"Future Funds" <${process.env.EMAIL_ADDRESS}>`, // sender address
-      to: userEmail, // list of receivers
-      subject: 'Verify your feautre Funds Account', // Subject line
-      html: `<h1>Hi ${userName} </h1>` // plain text body
-    };
-    this.sendMail(mailOptions);
-  }
 }
-
 
 module.exports = new Mailer();
