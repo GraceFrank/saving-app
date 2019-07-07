@@ -59,14 +59,15 @@ module.exports = (db, Sequelize) => {
     user.password = await Encryption.hashPassword(user.password);
   });
 
-  User.prototype.generateToken = function() {
+  User.prototype.generateToken = function(expirationTime = 60) {
+    //expiration time is in seconds
     //synchronous vs asynchronous
     return jwt.sign(
       {
         userId: this.id
       },
       `${process.env.PRIVATE_KEY}`,
-      { expiresIn: '1h' }
+      { expiresIn: expirationTime }
     );
   };
 
