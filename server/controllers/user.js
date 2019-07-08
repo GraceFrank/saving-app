@@ -10,11 +10,7 @@ class UserController {
     if (!user) res.status(401).send({ error: 'Invalid username/password' });
 
     //compare the passwords
-    console.log(user.password);
-    console.log(req.body.password);
-
     const password = await bcrypt.compare(user.password, req.body.password);
-    console.log(password);
     if (!password) return res.status(400).send('Invalid email/password');
 
     //generate token
