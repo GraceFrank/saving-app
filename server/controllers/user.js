@@ -1,5 +1,8 @@
+const {User} = require('../db/db');
+const bcrypt = require('bcrypt');
+
 class UserController {
-  signUp() {}
+  signUp() { }
 
   async login(req, res) {
     //find user by email
@@ -7,7 +10,11 @@ class UserController {
     if (!user) res.status(401).send({ error: 'Invalid username/password' });
 
     //compare the passwords
-    const password = bcrypt.compare(user.password, req.password);
+    console.log(user.password);
+    console.log(req.body.password);
+
+    const password = await bcrypt.compare(user.password, req.body.password);
+    console.log(password);
     if (!password) return res.status(400).send('Invalid email/password');
 
     //generate token
@@ -15,7 +22,7 @@ class UserController {
     res.send({ token });
   }
 
-  async resetToken(req, res){
+  async resetToken(req, res) {
     const user = await User.findOne({ _id: req.user.id });
     mailer.sendMail(user.email, user.firstName, token, mailOptions);
 
