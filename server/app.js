@@ -10,7 +10,7 @@ const app = express();
 routes(app);
 
 //syncing db with model
-db.sync({ force: true }).then(() => {
+db.sync({ force: false }).then(() => {
   const PORT = process.env.API_PORT || 5000;
   app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 });
