@@ -15,11 +15,11 @@ class Mailer {
     this.transporter = transporter;
   }
 
-  sendMail(userEmail, userFirstName, token, mailOptions) {
+  sendMail(userEmail, userFirstName, mailTemplate, token) {
     const transporter = this.transporter;
-    mailOptions = mailOptions(userEmail, userFirstName, token);
-    return new Promise(function(resolve, reject) {
-      transporter.sendMail(mailOptions, function(err, info) {
+    mailTemplate = mailTemplate(userEmail, userFirstName, token);
+    return new Promise(function (resolve, reject) {
+      transporter.sendMail(mailTemplate, function (err, info) {
         if (err) reject(err);
         else resolve(info);
       });
