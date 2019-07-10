@@ -7,7 +7,6 @@ module.exports = (db, Sequelize) => {
     firstName: {
       allowNull: false,
       type: Sequelize.STRING,
-      unique: true,
       validate: {
         notEmpty: true
       }
@@ -15,7 +14,6 @@ module.exports = (db, Sequelize) => {
     lastName: {
       allowNull: false,
       type: Sequelize.STRING,
-      unique: true,
       validate: {
         notEmpty: true
       }
@@ -55,11 +53,11 @@ module.exports = (db, Sequelize) => {
     }
   });
 
-  User.beforeCreate(async function(user) {
+  User.beforeCreate(async function (user) {
     user.password = await Encryption.hashPassword(user.password);
   });
 
-  User.prototype.generateToken = function(expirationTime = 60) {
+  User.prototype.generateToken = function (expirationTime = 60) {
     //expiration time is in seconds
     //synchronous vs asynchronous
     return jwt.sign(

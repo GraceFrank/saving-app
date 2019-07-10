@@ -1,4 +1,4 @@
-const {User} = require('../db/db');
+const { User } = require('../db/db');
 const bcrypt = require('bcrypt');
 
 class UserController {
