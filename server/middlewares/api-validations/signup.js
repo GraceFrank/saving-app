@@ -21,12 +21,12 @@ const schema = Joi.object().keys({
 });
 
 function validateUser(signUpDetails) {
-  return { error, value } = schema.validate(signUpDetails, schema);
+  return { error, value } = schema.validate(signUpDetails);
 }
 
 //middleware for validating user req.body
 module.exports = (req, res, next) => {
-  const { error, value } = schema.validate(req.body)
+  const { error, value } = validateUser(req.body);
   if (error) return res.send({ Error: error.details[0].message })
   next();
 }
