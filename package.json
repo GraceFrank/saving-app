@@ -6,17 +6,22 @@
   "scripts": {
     "start": "",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "startdev": "node ./server/app.js"
+    "startdev": "nodemon ./server/app.js",
+    "refreshdb": "node ./server/db/refresher.js",
+    "seeder": "node ./server/db/seeder.js"
   },
   "repository": "https://github.com/GraceFrank/saving-app",
   "author": "Grace Frank <frankgracey@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@hapi/joi": "^15.1.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.11",
     "nodemailer": "^6.2.1",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",

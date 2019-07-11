@@ -1,7 +1,10 @@
 const express = require('express');
-const bcrypt = require('bcrypt')
-const { User } = require('../db/db');
 const userCtrl = require('../controllers/user')
+const { User } = require('../db/db');
+const bcrypt = require('bcrypt');
+const mailer = require('../helpers/mailer');
+const mailOptions = require('../helpers/mail-template');
+const userController = require('../controllers/user')
 
 const router = express.Router();
 
@@ -10,19 +13,11 @@ const router = express.Router();
 //   return res.send({ user: 'users' });
 // });
 
-router.post('/login', async (req, res) => {
+//route to login
+router.post('/login', userController.login);
 
-    // find user by email
-    let user = await User.findOne({where: { email: req.body.email}});
-    if(!user) res.status(401).send({error: "Invalid username/password"});
-
-    //compare the passwords
-    const password = bcrypt.compare(user.password, req.password);
-    if (!password) return res.status(400).send('Invalid email/password');
-
-    res.send(user)
-   
-})
+//route to reset token
+router.post('/resetToken', userController.resetToken);
 
 router.param('userId', userCtrl.loadId)
 
