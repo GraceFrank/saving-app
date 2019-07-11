@@ -1,4 +1,4 @@
-function signupMailOptions(userEmail, firstName, token) {
+function signupMailTemplate(userEmail, firstName, token) {
   return {
     from: `"Future Funds" <${process.env.EMAIL_ADDRESS}>`, // sender address
     to: userEmail, // list of receivers
@@ -10,7 +10,7 @@ function signupMailOptions(userEmail, firstName, token) {
     
     <p><a href="${
       process.env.API_HOST
-    }/verify?${token}">Click here to verify your email</a></p>
+      }/verify?${token}">Click here to verify your email</a></p>
     
     <p>Or, copy and paste the following url in your browser:</p>
     
@@ -23,4 +23,4 @@ function signupMailOptions(userEmail, firstName, token) {
   };
 }
 
-module.exports = { signupMailOptions };
+module.exports = { signupMailTemplate };
