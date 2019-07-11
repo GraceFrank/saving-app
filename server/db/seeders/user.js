@@ -19,7 +19,6 @@ async function generateFakeUsers(amount = 10) {
       phone: faker.phone.phoneNumberFormat()
     });
   }
-  console.log(fakeUsers);
   return fakeUsers;
 }
 
