@@ -8,12 +8,12 @@ const users = require('../routes/users');
 const router = express.Router();
 
 //all routes/ goes here
-// router.use('/users', users);
+router.use('/users', users);
+
 
 module.exports = app => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
 
   app.use('/api/v1', router);
-  app.use('/users', users);
 };
