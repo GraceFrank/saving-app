@@ -3,12 +3,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 //my modules
-// const users = require('./users');
+const tryer = require('./poster');
 const users = require('../routes/users');
 const router = express.Router();
 
 //all routes/ goes here
-// router.use('/users', users);
+router.use('/try', tryer);
 
 module.exports = app => {
   app.use(bodyParser.json());

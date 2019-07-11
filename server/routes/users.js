@@ -1,6 +1,7 @@
 const express = require('express');
-const { User } = require('../db/db');
 const bcrypt = require('bcrypt')
+const { User } = require('../db/db');
+const userCtrl = require('../controllers/user')
 
 const router = express.Router();
 
@@ -22,5 +23,7 @@ router.post('/login', async (req, res) => {
     res.send(user)
    
 })
+
+router.param('userId', userCtrl.loadId)
 
 module.exports = router;
