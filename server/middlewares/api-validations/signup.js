@@ -27,6 +27,6 @@ function validateUser(signUpDetails) {
 //middleware for validating user req.body
 module.exports = (req, res, next) => {
   const { error, value } = validateUser(req.body);
-  if (error) return res.send({ Error: error.details.map(error=> error.message)})
+  if (error) return res.send({ Error: error.details[0].message })
   next();
 }
