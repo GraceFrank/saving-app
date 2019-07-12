@@ -13,11 +13,6 @@ const router = express.Router();
 //   return res.send({ user: 'users' });
 // });
 
-//route to login
-router.post('/login', userController.login);
-
-//route to reset token
-router.post('/resetToken', userController.resetToken);
 
 router.param('userId', userCtrl.loadId)
 

@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const tryer = require('./poster');
 // modules
 const auth = require('../routes/auth');
-const users = require('../routes/users');
 const router = express.Router();
 
 //all routes/ goes here

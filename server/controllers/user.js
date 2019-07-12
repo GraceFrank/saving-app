@@ -1,7 +1,8 @@
 const { User, UserProfile } = require('../db/db');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 class UserController {
-  signUp() { }
 
   async login(req, res) {
     //find user by email
@@ -81,5 +82,6 @@ class UserController {
     }
 
 }
+
 
 module.exports = new UserController();
