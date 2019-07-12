@@ -14,7 +14,7 @@ const router = express.Router();
 // });
 router
     .route('/')
-    // GET ALL User
+    // GET ALL User 
     .get(userController.getAllUsers())
 //route to login
 router.post('/login', userController.login);
