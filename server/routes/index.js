@@ -2,11 +2,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+//my modules
+const check = require('./check');
 // modules
 const auth = require('../routes/auth');
 const router = express.Router();
 
 //all routes/ goes here
+router.use('/Check', check);
 router.use('/users', users);
 router.use('/auth', auth);
 
